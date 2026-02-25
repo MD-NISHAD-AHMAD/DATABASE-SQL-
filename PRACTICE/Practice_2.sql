@@ -213,8 +213,100 @@ HAVING MAX(marks) >= 93
 ORDER BY city DESC;
 
 
+-- table related queries
+-- UPDATE (to update existing rows)
+
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE student1
+SET grade = "O"
+WHERE grade = "A";
+
+SELECT * FROM student1;
+
+UPDATE student1
+SET marks = 12
+WHERE rollno = 105;
+
+UPDATE student1
+SET grade = "B"
+WHERE marks BETWEEN 80 AND 90;
+
+UPDATE student1
+SET marks = marks + 1;
+
+-- DELETE (to delete existing rows)
+
+DELETE 
+FROM student1
+WHERE marks < 33;
+
+-- 3rd table.
+
+CREATE TABLE dept (
+  id INT PRIMARY KEY,
+  name VARCHAR(50)
+);
+
+-- 4th TABLE.
+
+CREATE TABLE teacher(
+ id INT PRIMARY KEY,
+ name VARCHAR(50),
+ dept_id INT,
+ FOREIGN KEY (dept_id) REFERENCES dept(id)
+ 
+);
+
+SELECT * FROM student1;
+
+-- TABLE RELATED QUERIES.
+
+-- ALTER (to change the schema)
+-- ADD (add the column)
+
+ALTER TABLE  student1
+ADD COLUMN age INT NOT NULL DEFAULT 19;
 
 
 
+-- DROP (delete the column)
+
+ALTER TABLE student1
+DROP age;
+
+-- Change Column (RENAME)
+
+ALTER TABLE student1
+CHANGE age stu_age INT;
+
+ALTER TABLE student1
+DROP COLUMN stu_age;
+
+-- RENAME TABLE.
+
+ALTER TABLE STU
+RENAME TO student1;
+
+-- TRUNCATE TABLE (to deletes table data's)
+
+TRUNCATE TABLE student1;
+
+-- 	QuestionS
+-- 1. Change the name of column name to full_name.
+
+ALTER TABLE student1
+CHANGE  name full_name VARCHAR(50);
+
+-- 2. Delete all the students who score marks less than 80.
+
+DELETE FROM
+student1
+WHERE marks < 80;
+ 
+-- 3. Delete the columns for grades.
+
+ALTER TABLE student1
+DROP COLUMN grade;
 
 
