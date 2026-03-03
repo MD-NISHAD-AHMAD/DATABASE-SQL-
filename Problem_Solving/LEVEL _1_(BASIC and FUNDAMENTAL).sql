@@ -1,0 +1,63 @@
+-- PROBLEM SOLVING.
+
+USE db;
+
+-- 	 LEVEL 1 - (BASIC and FUNDAMENTAL).
+
+-- 1. SHOW ALL RECORDS FROM THE TABLE.
+
+SELECT * FROM salaries;
+
+-- 2. DISPLAY ONLY J0B_TITLE AND SALARY_IN_USD.
+
+SELECT job_title, salary_in_usd
+FROM salaries;
+
+-- 3. FIND ALL EMPLOYEES WHOSE EXPERIENCE-LEVEL IS 'SE'.
+
+SELECT *
+FROM salaries
+WHERE experience_level = 'SE';
+
+-- 4. SHOW EMPLOYEES WHERE SALARY_IN_USD IS GREATER THAN 100000.
+
+SELECT *
+FROM salaries
+WHERE salary_in_usd > 100000;
+
+-- 5. DISPLAY RECORDS WHERE COMPANY_LOCATION IS 'US'
+
+SELECT *
+FROM salaries
+WHERE company_location = 'US';
+
+-- 6. SORT EMPLOYEES BY SALARY_IN_USD IN DESCENDING ORDER.
+
+SELECT *
+FROM salaries
+ORDER BY salary_in_usd DESC;
+
+-- 7. SHOW TOP 3 HIGHEST PAID EMPLOYEES.
+
+SELECT *
+FROM salaries
+ORDER BY salary_in_usd DESC
+LIMIT 3;
+
+-- 8. COUNT TOTAL NUMBER OF EMPLOYEES.
+
+SELECT COUNT(*)
+FROM salaries;
+
+-- 9. FIND THE MINIMUM AND MAXIMUM SALARY.
+
+SELECT
+   MIN(salary_in_usd) AS Minimum_salary,
+   MAX(salary_in_usd) AS Maximum_salary
+FROM salaries;
+
+-- 10. SHOW EMPLOYEES WHOSE REMOTE_RATIO IS 0.
+
+SELECT * 
+FROM salaries
+WHERE remote_ratio = 0;

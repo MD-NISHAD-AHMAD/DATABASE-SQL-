@@ -1,0 +1,73 @@
+USE db;
+
+SELECT * FROM salaries;
+
+--  LEVEL 2 (FILTERING + GROUPING)
+
+
+-- 11. COUNT NUMBER OF EMPLOYESS FOR EACH EXPERIENCE_LEVEL.
+
+SELECT experience_level, COUNT(*) AS TOTAL_EMPLOYEES
+FROM salaries
+GROUP BY experience_level;
+
+-- 12. FIND AVERAGE SALARY FOR EACH JOB_TITLE.
+
+SELECT job_title, AVG(salary_in_usd) AS AVERAGE_SALARY
+FROM salaries
+GROUP BY job_title;
+
+-- 13. SHOW TOTAL SALARY PAID PER COMPANY_LOCATION.
+
+SELECT company_location, SUM(salary_in_usd) AS TOTAL_SALARY_PAID
+FROM salaries
+GROUP BY company_location;
+
+-- 14. FIND NUMBER OF EMPLOYEES IN EACH COMPANY_SIZE.
+
+SELECT company_size, COUNT(*) AS TOTAL_EMPLOYEES
+FROM salaries
+GROUP BY company_size;
+
+-- 15. SHIW JOB TITLES WHERE AVERAGE SALARY IS GREATER THAN 150000.
+
+SELECT job_title, AVG(salary_in_usd) AS AVERAGE_SALARY
+FROM salaries
+GROUP BY job_title
+HAVING AVG(salary_in_usd) > 150000;
+
+-- 16. FIND THE HIGHEST SALARY FRO EACH COMPANY_LOCATION.
+
+SELECT company_location, MAX(salary_in_usd) AS HIGHEST_SALARY
+FROM salaries
+GROUP BY company_location;
+
+-- 17. SHOW TOTAL EMPLOYEES WORKING REMOTELY (REMOTE_RATIO).
+
+SELECT COUNT(*) AS total_remote_employees
+FROM salaries
+WHERE remote_ratio = 100;
+
+-- 18. COUNT EMPLOYEES GROUPED BY EMPLOYEMENT_TYPE.
+
+SELECT 
+	employment_type,
+    COUNT(*) AS total_employees
+FROM salaries
+GROUP BY employment_type;
+
+-- 19. FIND AVERAGE SALARY FOR EACH EXPERIENCE_LEVEL.
+
+SELECT experience_level, AVG(salary_in_usd) AS AVERAGE_SALARY
+FROM salaries
+GROUP BY experience_level; 
+
+-- 20. SHOW TOP 2 HIGHEST PAYING JOB TITLE BASED ON AVERAGE SALARY.
+
+SELECT 
+     job_title,
+     AVG(salary_in_usd) AS AVG_SALARY
+FROM salaries
+GROUP BY job_title
+ORDER BY AVG_SALARY DESC
+LIMIT 2;
